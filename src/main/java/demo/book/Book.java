@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -15,7 +17,10 @@ import static java.util.Objects.requireNonNull;
 
 @Entity
 @IdClass(Book.Pk.class)
-public class Book {
+public class Book implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
