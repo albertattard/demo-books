@@ -1,0 +1,157 @@
+{
+  "entries": [
+    {
+      "type": "Heading",
+      "level": "H1",
+      "title": "Books"
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "A simple Spring Boot web application that returns a random book from a list of",
+        "30.000 books, stored in database through its single REST endpoint.",
+        "",
+        "```",
+        "GET '/book/random'",
+        "```",
+        "",
+        "This will return a JSON object similar to the following.",
+        "",
+        "```json",
+        "{",
+        "  \"name\": \"Effective Java\",",
+        "  \"author\": \"Joshua Bloch\"",
+        "}",
+        "```",
+        "",
+        "This example makes use of the following tech-stack",
+        "",
+        "- [Java 21](https://www.oracle.com/java/technologies/downloads/#java21)",
+        "- [Maven](https://maven.apache.org/) and",
+        "  [Maven Wrapper](https://maven.apache.org/wrapper/)",
+        "- [Spring Boot](https://spring.io/projects/spring-boot),",
+        "  [Spring Web Starter](https://docs.spring.io/spring-boot/reference/web/index.html),",
+        "  and",
+        "  [Spring Data JPA starter](https://docs.spring.io/spring-boot/how-to/data-access.html)",
+        "- [H2 in-memory database](https://www.h2database.com/html/main.html), and",
+        "- [Hibernate](https://hibernate.org/).",
+        "",
+        "and it was created using the",
+        "[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.3.2&packaging=jar&jvmVersion=21&groupId=demo&artifactId=demo-books&name=Books%20Demo&description=A%20very%20simple%20Spring%20Boot%20web%20application%20that%20fetches%20a%20large%20amount%20of%20books%20from%20an%20H2%20in-memory%20database%20and%20returns%20a%20random%20one.&packageName=demo&dependencies=web,h2,data-jpa).",
+        "",
+        "This demo application is very similar to the",
+        "[Famous Quotes Demo](https://github.com/albertattard/demo-famous-quotes)."
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": "H2",
+      "title": "Prerequisites"
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "- [Oracle Java 21](https://www.oracle.com/java/technologies/downloads/#java21)"
+      ]
+    },
+    {
+      "type": "Heading",
+      "level": "H2",
+      "title": "Run the example"
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "1. Build the application and run the unit and integration tests.",
+        "",
+        "   Do not run the integration tests directly (`mvn integration-test`), as these",
+        "   will not stop the application, and the Tomcat server will stay running in the",
+        "   background without generating the required metadata. Furthermore, failing",
+        "   tests will not cause the build fail as the integration tests run all tests,",
+        "   and it does not fail. The verify process takes the results and fails",
+        "   accordingly."
+      ]
+    },
+    {
+      "type": "Command",
+      "commands": [
+        "./mvnw clean verify"
+      ],
+      "indent": 3
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "   All tests should pass.",
+        "",
+        "   (_Optional_) List the created fat JAR file."
+      ]
+    },
+    {
+      "type": "Command",
+      "commands": [
+        "tree --charset=ascii --dirsfirst --sort=name -L 1 --prune './target'"
+      ],
+      "output": {
+        "caption": "The fat (ends with _.jar_) and the thin (ends with _.jar.original_) JAR files"
+      },
+      "indent": 3
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "2. Run the Java application"
+      ]
+    },
+    {
+      "type": "Command",
+      "commands": [
+        "java -jar './target/demo-books-1.0.0.jar'  > './target/output.txt' 2>&1 &"
+      ],
+      "indent": 3
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "   Wait for the application to start."
+      ]
+    },
+    {
+      "type": "Command",
+      "commands": [
+        "while [ \"$(curl -s -o /dev/null -w '%{http_code}' 'http://localhost:8080/book/random')\" -ne '200' ]; do sleep 1; done"
+      ],
+      "indent": 3
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "   Request a random book"
+      ]
+    },
+    {
+      "type": "Command",
+      "commands": [
+        "curl --silent 'http://localhost:8080/book/random' | jq"
+      ],
+      "output": {
+        "caption": "The response may vary, but it should have the following properties.",
+        "content_type": "json"
+      },
+      "indent": 3
+    },
+    {
+      "type": "Markdown",
+      "contents": [
+        "3. Stop the application when ready"
+      ]
+    },
+    {
+      "type": "Command",
+      "commands": [
+        "kill \"$(jcmd | grep 'demo-books-1.0.0.jar' | cut -d' ' -f1)\""
+      ],
+      "indent": 3
+    }
+  ]
+}
