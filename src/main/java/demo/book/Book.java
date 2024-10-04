@@ -59,9 +59,10 @@ public class Book implements Serializable {
     @Override
     public boolean equals(final Object object) {
         return object instanceof final Book other
-                && Objects.equals(id, other.id)
-                && Objects.equals(name, other.name)
-                && Objects.equals(author, other.author);
+               && getClass() == other.getClass()
+               && Objects.equals(id, other.id)
+               && Objects.equals(name, other.name)
+               && Objects.equals(author, other.author);
     }
 
     @Override
