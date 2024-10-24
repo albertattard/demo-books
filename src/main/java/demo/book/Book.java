@@ -34,9 +34,9 @@ public class Book implements Serializable {
     protected Book() {}
 
     public Book(final BookId id, final BookName name, final AuthorName author) {
-        this.id = requireNonNull(id);
-        this.name = requireNonNull(name);
-        this.author = requireNonNull(author);
+        this.id = requireNonNull(id, "The book id cannot be null");
+        this.name = requireNonNull(name, "The book name cannot be null");
+        this.author = requireNonNull(author, "The book author cannot be null");
     }
 
     public BookId getId() {
@@ -52,7 +52,7 @@ public class Book implements Serializable {
     }
 
     public <T> T map(final Function<Book, T> mapper) {
-        requireNonNull(mapper);
+        requireNonNull(mapper, "The mapper cannot be null");
         return mapper.apply(this);
     }
 
@@ -72,7 +72,7 @@ public class Book implements Serializable {
 
     @Override
     public String toString() {
-        return "Book[id=%s, name=%s, author=%s]".formatted(id, name, author);
+        return "Book[id=" + id + ", name=" + name + ", author=" + author + ']';
     }
 
     public static class Pk {

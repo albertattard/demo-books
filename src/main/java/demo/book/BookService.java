@@ -15,7 +15,7 @@ public class BookService {
     private final BookRepository repository;
 
     public BookService(final BookRepository repository) {
-        this.repository = requireNonNull(repository);
+        this.repository = requireNonNull(repository, "The book repository cannot be null");
     }
 
     public Optional<Book> random() {

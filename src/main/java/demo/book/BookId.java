@@ -11,6 +11,6 @@ public record BookId(long value) implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public BookId {
-        checkArgument(value > 0, "Invalid book id");
+        checkArgument(value > 0, "The book id cannot be less than 1");
     }
 }

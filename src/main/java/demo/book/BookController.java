@@ -14,8 +14,7 @@ public class BookController {
     private final BookService service;
 
     public BookController(final BookService service) {
-        requireNonNull(service);
-        this.service = service;
+        this.service = requireNonNull(service, "The book service cannot be null");
     }
 
     @GetMapping("/random")
