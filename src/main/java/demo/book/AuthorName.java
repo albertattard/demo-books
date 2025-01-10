@@ -11,6 +11,6 @@ public record AuthorName(String value) implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public AuthorName {
-        checkArgument(value != null && !value.isEmpty() && value.length() < 255, "The author name cannot be null, empty and must be less than 255 letters");
+        checkArgument(value != null && !value.isEmpty() && value.length() <= 255, "The author name cannot be null, empty and must be less than or equal to 255 letters");
     }
 }
