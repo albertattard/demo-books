@@ -30,7 +30,7 @@ This example makes use of the following tech-stack
 - [Hibernate](https://hibernate.org/).
 
 and it was created using the
-[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.3.2&packaging=jar&jvmVersion=21&groupId=demo&artifactId=demo-books&name=Books%20Demo&description=A%20very%20simple%20Spring%20Boot%20web%20application%20that%20fetches%20a%20large%20amount%20of%20books%20from%20an%20H2%20in-memory%20database%20and%20returns%20a%20random%20one.&packageName=demo&dependencies=web,h2,data-jpa).
+[Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.4.4&packaging=jar&jvmVersion=21&groupId=demo&artifactId=demo-books&name=Books%20Demo&description=A%20very%20simple%20Spring%20Boot%20web%20application%20that%20fetches%20a%20large%20amount%20of%20books%20from%20an%20H2%20in-memory%20database%20and%20returns%20a%20random%20one.&packageName=demo&dependencies=web,h2,data-jpa).
 
 This demo application is very similar to the
 [Famous Quotes Demo](https://github.com/albertattard/demo-famous-quotes).
@@ -51,7 +51,7 @@ This demo application is very similar to the
    accordingly.
 
    ```shell
-   ./mvnw clean verify
+   ../mvnw clean verify
    ```
 
    All tests should pass.
@@ -66,8 +66,8 @@ This demo application is very similar to the
 
    ```
    ./target
-   |-- demo-books-1.0.0.jar
-   `-- demo-books-1.0.0.jar.original
+   |-- spring-boot-books-demo-1.0.0.jar
+   `-- spring-boot-books-demo-1.0.0.jar.original
 
    1 directory, 2 files
    ```
@@ -75,7 +75,7 @@ This demo application is very similar to the
 2. Run the Java application
 
    ```shell
-   java -jar './target/demo-books-1.0.0.jar'  > './target/output.txt' 2>&1 &
+   java -jar './target/spring-boot-books-demo-1.0.0.jar'  > './target/output.txt' 2>&1 &
    ```
 
    Wait for the application to start.
@@ -102,5 +102,5 @@ This demo application is very similar to the
 3. Stop the application when ready
 
    ```shell
-   kill "$(jcmd | grep 'demo-books-1.0.0.jar' | cut -d' ' -f1)"
+   kill "$(jcmd | grep 'spring-boot-books-demo-1.0.0.jar' | cut -d' ' -f1)"
    ```
