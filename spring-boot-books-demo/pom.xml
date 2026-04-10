@@ -49,6 +49,7 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <!-- Utilities -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -63,12 +64,6 @@
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>5.16.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -110,9 +105,6 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <argLine>
-                        -javaagent:${settings.localRepository}/org/mockito/mockito-core/5.16.1/mockito-core-5.16.1.jar
-                    </argLine>
                     <classesDirectory>${project.build.outputDirectory}</classesDirectory>
                     <excludes>
                         <exclude>**/*Test.java</exclude>

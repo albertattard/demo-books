@@ -18,6 +18,7 @@
     </properties>
 
     <modules>
+        <module>micronaut-books-demo</module>
         <module>spring-boot-books-demo</module>
     </modules>
 

@@ -94,8 +94,8 @@ This demo application is very similar to the
 
    ```json
    {
-     "name": "A Tale of Two Cities",
-     "author": "Charles John Huffam Dickens"
+     "name": "Doctor Who: Spiral Scratch",
+     "author": "Gary Russell"
    }
    ```
 
@@ -104,3 +104,4 @@ This demo application is very similar to the
    ```shell
    kill "$(jcmd | grep 'spring-boot-books-demo-1.0.0.jar' | cut -d' ' -f1)"
    ```
+
